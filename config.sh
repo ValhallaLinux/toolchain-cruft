@@ -1,5 +1,5 @@
-TOOLCHAIN="x86_64-solus-linux"
+TOOLCHAIN="x86_64-valhalla-linux"
 XTOOLCHAIN="x86_64-bootstrap-linux"
-TOOLCHAIN32="i686-solus-linux"
+TOOLCHAIN32="i686-valhalla-linux"
 XTOOLCHAIN32="i686-bootstrap-linux"
-BUILD_PROFILE="solus1_multilib"
+BUILD_PROFILE="valhalla1_multilib"
