@@ -24,7 +24,7 @@ source "${SUBFILE}"
 
 PACKAGES=(libstdc++ binutils gcc ncurses bash coreutils util-linux grep
           sed tar bzip2 gzip xz diffutils patch file findutils gawk gettext
-          m4 make texinfo)
+          m4 make texinfo perl)
 
 old_path="${PATH}"
 
@@ -43,3 +43,14 @@ if [[ ! -e /tools/ ]]; then
 fi
 
 build_all
+
+if [[ ! -e /tools/.cleaned ]]; then
+    echo "Cleaning tools rootfs"
+    strip --strip-debug /tools/lib/*
+    strip --strip-debug /tools/lib32/*
+    /usr/bin/strip --strip-unneeded /tools/{,s}bin/*
+    rm -rf /tools/{,share}/{info,man,doc}
+    echo "cleaned" >> /tools/.cleaned
+    echo "Chowning /tools/ to root"
+    sudo chown -R root:root "${PKG_INSTALL_DIR}/tools" || do_fatal "Could not chown rootfs. Please fix."
+fi
