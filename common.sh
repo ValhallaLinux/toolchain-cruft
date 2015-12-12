@@ -26,7 +26,7 @@ if [[ -z "${CONFIGURE_OPTIONS}" ]]; then
 fi
 
 # TODO: Make this a configuration item somewhere
-MAKE_CONCURRENCY="-j5"
+MAKE_CONCURRENCY="-j2"
 
 # Perform some sanity checks or bail immediately
 function sanity_check()
